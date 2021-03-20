@@ -99,10 +99,11 @@ public class Employee extends TextPrompt {
 				+ "and Arrival Airport: " + airport.readAirportByCode(routes.readRouteByID(flight.getRouteID()).get(0).getDestinationID()).get(0).getCity() + "\n"
 				+ "\r\n"
 				+ "Departure Airport: " + routes.readRouteByID(flight.getRouteID()).get(0).getOriginID().getAirportCode()
-				+ "| Arrival Airport: " + routes.readRouteByID(flight.getRouteID()).get(0).getDestinationID().getAirportCode()
-				+ "| \r\n"
+				+ " | Arrival Airport: " + routes.readRouteByID(flight.getRouteID()).get(0).getDestinationID().getAirportCode()
+				+ " | \r\n"
 				+ "Departure Date: " + flight.getDepartureTime().toLocalDate()
 				+ "| Departure Time: " + flight.getDepartureTime().toLocalTime() + "\n"
+				+ "| Arrival Date: E | Arriva1l Time: F \r\n"
 				+ "");
 	}
 
