@@ -2,6 +2,9 @@ package dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,11 +47,14 @@ public class FlightDAO extends BaseDAO<Flight> {
 			a.setId(rs.getInt("airplane_id"));
 			f.setAirplaneID(a);
 			
+			// split the date and time by the space and parse the localdatetime with it
+			String[] dateTimeSplit = rs.getString("departure_time").split(" ");
+			LocalDateTime dt = LocalDateTime.of(LocalDate.parse(dateTimeSplit[0]), LocalTime.parse(dateTimeSplit[1]));
+			f.setDepartureTime(dt);
 			
+			f.setReservedSeats(rs.getInt("reserved_seats"));
+			f.setSeatPrice(rs.getDouble("seat_price"));
 			
-			
-			
-
 			flights.add(f);
 		}
 		return flights;

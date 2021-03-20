@@ -1,5 +1,6 @@
 package domain;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class Flight {
@@ -7,9 +8,9 @@ public class Flight {
 	private Integer id;
 	private Route routeID;
 	private Airplane airplaneID;
-	private Date departureTime;
+	private LocalDateTime departureTime;
 	private Integer reservedSeats;
-	private Integer seatPrice;
+	private Double seatPrice;
 	public Integer getId() {
 		return id;
 	}
@@ -28,10 +29,11 @@ public class Flight {
 	public void setAirplaneID(Airplane airplaneID) {
 		this.airplaneID = airplaneID;
 	}
-	public Date getDepartureTime() {
+	public LocalDateTime getDepartureTime() {
+		
 		return departureTime;
 	}
-	public void setDepartureTime(Date departerTime) {
+	public void setDepartureTime(LocalDateTime departerTime) {
 		this.departureTime = departerTime;
 	}
 	public Integer getReservedSeats() {
@@ -40,10 +42,10 @@ public class Flight {
 	public void setReservedSeats(Integer reservedSeats) {
 		this.reservedSeats = reservedSeats;
 	}
-	public Integer getSeatPrice() {
+	public Double getSeatPrice() {
 		return seatPrice;
 	}
-	public void setSeatPrice(Integer seatPrice) {
+	public void setSeatPrice(Double seatPrice) {
 		this.seatPrice = seatPrice;
 	}
 	@Override
