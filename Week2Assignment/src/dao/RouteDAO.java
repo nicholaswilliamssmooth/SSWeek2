@@ -32,6 +32,14 @@ public class RouteDAO extends BaseDAO<Route> {
 	public List<Route> readRouteByID(Route route) throws ClassNotFoundException, SQLException {
 		return read("SELECT * FROM route WHERE id = ?", new Object[] {route.getId()});
 	}
+	
+	public List<Route> readRouteByOrigin(Airport airport) throws ClassNotFoundException, SQLException {
+		return read("SELECT * FROM route WHERE origin_id = ?", new Object[] {airport.getAirportCode() });
+	}
+	
+	public List<Route> readRouteByPlaneCodes(Airport origin, Airport dest) throws ClassNotFoundException, SQLException {
+		return read("SELECT * FROM route WHERE origin_id = ? AND destination_id = ?", new Object[] {origin.getAirportCode(), dest.getAirportCode() });
+	}
 
 	
 	public List<Route> extractData(ResultSet rs) throws ClassNotFoundException, SQLException {

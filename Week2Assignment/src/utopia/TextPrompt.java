@@ -1,5 +1,7 @@
 package utopia;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Scanner;
 
 // Mainly contains helper functions to do things for the console output.
@@ -32,6 +34,60 @@ public abstract class TextPrompt {
 			}
 		}
 		return choiceToInt;
+
+
+	}
+	
+	public String getDateInput() {
+		Scanner scan = new Scanner(System.in);
+		Boolean valid = false;
+		String choice = "";
+		LocalDate choiceToDate = LocalDate.of(1, 1, 1);
+		
+		while (!valid) {
+			choice = scan.nextLine();
+			if (choice.equals("N/A"))
+				return choice;
+			else if (choice.equals("quit"))
+				return choice;
+			try {
+				// Test to see if you entered a date
+				choiceToDate = LocalDate.parse(choice);
+				valid = true;
+
+			}
+			catch(Exception InputMismatchException) {
+				System.out.println("Invalid input, must type in a date formatted as YYYY-MM-DD");
+			}
+		}
+		return choice;
+
+
+	}
+	
+	public String getTimeInput() {
+		Scanner scan = new Scanner(System.in);
+		Boolean valid = false;
+		String choice = "";
+		LocalTime choiceToTime = LocalTime.of(1, 1);
+		
+		while (!valid) {
+			choice = scan.nextLine();
+			if (choice.equals("N/A"))
+				return choice;
+			else if (choice.equals("quit"))
+				return choice;
+			try {
+				// Test to see if you entered an time
+				choiceToTime = LocalTime.parse(choice);
+				valid = true;
+
+			}
+			catch(Exception InputMismatchException) {
+				System.out.println("Invalid input, must type in a time formatted as HH:MM");
+			}
+		}
+		return choice;
 
 
 	}

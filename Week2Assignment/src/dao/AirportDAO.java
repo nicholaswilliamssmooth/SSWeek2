@@ -25,7 +25,7 @@ public class AirportDAO extends BaseDAO<Airport> {
 				new Object[] {airport.getAirportCode(), airport.getCity()});
 	}
 	
-	public List<Airport> readAllAirports(Airport airport) throws ClassNotFoundException, SQLException {
+	public List<Airport> readAllAirports() throws ClassNotFoundException, SQLException {
 		return read("SELECT * FROM airport", null);
 	}
 	

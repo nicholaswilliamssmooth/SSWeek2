@@ -9,7 +9,29 @@ public class Flight {
 	private Route routeID;
 	private Airplane airplaneID;
 	private LocalDateTime departureTime;
+	private LocalDateTime arrivalTime;
 	private Integer reservedSeats;
+	private Integer reservedBusiness;
+	private Integer reservedFirstClass;
+	
+	public LocalDateTime getArrivalTime() {
+		return arrivalTime;
+	}
+	public void setArrivalTime(LocalDateTime arrivalTime) {
+		this.arrivalTime = arrivalTime;
+	}
+	public Integer getReservedBusiness() {
+		return reservedBusiness;
+	}
+	public void setReservedBusiness(Integer reservedBusiness) {
+		this.reservedBusiness = reservedBusiness;
+	}
+	public Integer getReservedFirstClass() {
+		return reservedFirstClass;
+	}
+	public void setReservedFirstClass(Integer reservedFirstClass) {
+		this.reservedFirstClass = reservedFirstClass;
+	}
 	private Double seatPrice;
 	public Integer getId() {
 		return id;

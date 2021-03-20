@@ -15,8 +15,8 @@ import domain.Route;
 
 public class FlightDAO extends BaseDAO<Flight> {
 	public void updateFlight(Flight flight) throws ClassNotFoundException, SQLException {
-		save("UPDATE flight SET route_id = ?, airplane_id = ?, departure_time = ?, reserved_seats = ?, seat_price = ?  WHERE id = ?",
-				new Object[] {flight.getRouteID(), flight.getAirplaneID(), flight.getDepartureTime(), flight.getReservedSeats(), flight.getSeatPrice(), flight.getId()});
+		save("UPDATE flight SET route_id = ?, airplane_id = ?, departure_time = ?, arrival_time = ?, reserved_seats = ?, reserved_first = ?, reserved_business = ?, seat_price = ?  WHERE id = ?",
+				new Object[] {flight.getRouteID().getId(), flight.getAirplaneID().getId(), flight.getDepartureTime(), flight.getArrivalTime(), flight.getReservedSeats(), flight.getReservedFirstClass(), flight.getReservedBusiness(), flight.getSeatPrice(), flight.getId()});
 	}
 
 	public void deleteFlight(Flight flight) throws ClassNotFoundException, SQLException {
@@ -25,8 +25,8 @@ public class FlightDAO extends BaseDAO<Flight> {
 	}
 	
 	public void addFlight(Flight flight) throws ClassNotFoundException, SQLException {
-		save("INSERT INTO flight VALUES (?, ?, ?, ?, ?, ?)", 
-				new Object[] {flight.getId(), flight.getRouteID(), flight.getAirplaneID(), flight.getDepartureTime(), flight.getReservedSeats(), flight.getSeatPrice()});
+		save("INSERT INTO flight VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", 
+				new Object[] {flight.getId(), flight.getRouteID(), flight.getAirplaneID(), flight.getDepartureTime(), flight.getArrivalTime(), flight.getReservedSeats(), flight.getReservedFirstClass(), flight.getReservedBusiness(), flight.getSeatPrice()});
 	}
 	
 	public List<Flight> readAllFlights() throws ClassNotFoundException, SQLException {
@@ -48,11 +48,18 @@ public class FlightDAO extends BaseDAO<Flight> {
 			f.setAirplaneID(a);
 			
 			// split the date and time by the space and parse the localdatetime with it
-			String[] dateTimeSplit = rs.getString("departure_time").split(" ");
-			LocalDateTime dt = LocalDateTime.of(LocalDate.parse(dateTimeSplit[0]), LocalTime.parse(dateTimeSplit[1]));
+			String[] departSplit = rs.getString("departure_time").split(" ");
+			LocalDateTime dt = LocalDateTime.of(LocalDate.parse(departSplit[0]), LocalTime.parse(departSplit[1]));
 			f.setDepartureTime(dt);
 			
+			String[] arriveSplit = rs.getString("arrival_time").split(" ");
+			dt = LocalDateTime.of(LocalDate.parse(arriveSplit[0]), LocalTime.parse(arriveSplit[1]));
+			f.setArrivalTime(dt);
+			
+			
 			f.setReservedSeats(rs.getInt("reserved_seats"));
+			f.setReservedFirstClass(rs.getInt("reserved_first"));
+			f.setReservedBusiness(rs.getInt("reserved_business"));
 			f.setSeatPrice(rs.getDouble("seat_price"));
 			
 			flights.add(f);

@@ -81,6 +81,8 @@ public class MainClass extends TextPrompt {
 			break;
 		}
 		
+		System.out.println("Thank you for using this software");
+		
 
 	}
 

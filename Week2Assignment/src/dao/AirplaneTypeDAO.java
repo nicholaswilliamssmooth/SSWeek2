@@ -8,27 +8,27 @@ import java.util.List;
 import domain.AirplaneType;
 
 public class AirplaneTypeDAO extends BaseDAO<AirplaneType> {
-	public void updateAirplane(AirplaneType airplaneType) throws ClassNotFoundException, SQLException {
-		save("UPDATE airplane SET type_id = ? WHERE id = ?",
-				new Object[] {airplaneType.getMaxCapacity(), airplaneType.getId()});
+	public void updateAirplaneType(AirplaneType airplaneType) throws ClassNotFoundException, SQLException {
+		save("UPDATE airplane_type SET max_capacity = ?, first_class = ?, business_class = ?  WHERE id = ?",
+				new Object[] {airplaneType.getMaxCapacity(), airplaneType.getFirstClass(), airplaneType.getBusinessClass(), airplaneType.getId()});
 	}
 
-	public void deleteRoute(AirplaneType airplaneType) throws ClassNotFoundException, SQLException {
-		save("DELETE FROM airplane WHERE id = ?", 
+	public void deleteAirplaneType(AirplaneType airplaneType) throws ClassNotFoundException, SQLException {
+		save("DELETE FROM airplane_type WHERE id = ?", 
 				new Object[] {airplaneType.getId()});
 	}
 	
-	public void addRoute(AirplaneType airplaneType) throws ClassNotFoundException, SQLException {
-		save("INSERT INTO airplane VALUES (?, ?)", 
-				new Object[] {airplaneType.getId(), airplaneType.getMaxCapacity()});
+	public void addAirplaneType(AirplaneType airplaneType) throws ClassNotFoundException, SQLException {
+		save("INSERT INTO airplane_type VALUES (?, ?, ?, ?)", 
+				new Object[] {airplaneType.getId(), airplaneType.getMaxCapacity(), airplaneType.getFirstClass(), airplaneType.getBusinessClass()});
 	}
 	
-	public List<AirplaneType> readAllRoutes() throws ClassNotFoundException, SQLException {
-		return read("SELECT * FROM airplane", null);
+	public List<AirplaneType> readAllAirplaneType() throws ClassNotFoundException, SQLException {
+		return read("SELECT * FROM airplane_type", null);
 	}
 	
-	public List<AirplaneType> readRouteByID(AirplaneType airplane) throws ClassNotFoundException, SQLException {
-		return read("SELECT * FROM airplane WHERE id = ?", new Object[] {airplane.getId()});
+	public List<AirplaneType> readAirplaneTypeByID(AirplaneType airplane) throws ClassNotFoundException, SQLException {
+		return read("SELECT * FROM airplane_type WHERE id = ?", new Object[] {airplane.getId()});
 	}
 
 	
@@ -38,6 +38,9 @@ public class AirplaneTypeDAO extends BaseDAO<AirplaneType> {
 			AirplaneType a = new AirplaneType();
 			a.setId(rs.getInt("id"));
 			a.setMaxCapacity(rs.getInt("max_capacity"));
+			a.setFirstClass(rs.getInt("first_class"));
+			a.setBusinessClass(rs.getInt("business_class"));
+
 			planeTypes.add(a);
 		}
 		return planeTypes;

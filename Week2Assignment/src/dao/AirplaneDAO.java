@@ -16,21 +16,21 @@ public class AirplaneDAO extends BaseDAO<Airplane> {
 				new Object[] {airplane.getAirplaneModel(), airplane.getId()});
 	}
 
-	public void deleteRoute(Airplane airplane) throws ClassNotFoundException, SQLException {
+	public void deleteAirplane(Airplane airplane) throws ClassNotFoundException, SQLException {
 		save("DELETE FROM airplane WHERE id = ?", 
 				new Object[] {airplane.getId()});
 	}
 	
-	public void addRoute(Airplane airplane) throws ClassNotFoundException, SQLException {
+	public void addAirplane(Airplane airplane) throws ClassNotFoundException, SQLException {
 		save("INSERT INTO airplane VALUES (?, ?)", 
 				new Object[] {airplane.getId(), airplane.getAirplaneModel()});
 	}
 	
-	public List<Airplane> readAllRoutes() throws ClassNotFoundException, SQLException {
+	public List<Airplane> readAllAirplane() throws ClassNotFoundException, SQLException {
 		return read("SELECT * FROM airplane", null);
 	}
 	
-	public List<Airplane> readRouteByID(Airplane airplane) throws ClassNotFoundException, SQLException {
+	public List<Airplane> readAirplaneByID(Airplane airplane) throws ClassNotFoundException, SQLException {
 		return read("SELECT * FROM airplane WHERE id = ?", new Object[] {airplane.getId()});
 	}
 

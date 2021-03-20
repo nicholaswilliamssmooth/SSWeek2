@@ -3,6 +3,21 @@ package domain;
 public class AirplaneType {
 	
 	private Integer maxCapacity;
+	private Integer firstClass;
+	private Integer businessClass;
+	
+	public Integer getFirstClass() {
+		return firstClass;
+	}
+	public void setFirstClass(Integer firstClass) {
+		this.firstClass = firstClass;
+	}
+	public Integer getBusinessClass() {
+		return businessClass;
+	}
+	public void setBusinessClass(Integer businessClass) {
+		this.businessClass = businessClass;
+	}
 	private Integer id;
 	
 	public Integer getMaxCapacity() {
