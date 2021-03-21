@@ -78,6 +78,8 @@ public class MainClass extends TextPrompt {
 			break;		
 		case 3:
 			System.out.println("You are Traveler");
+			Traveler tra = new Traveler();
+			tra.LoginPrompt();
 			break;
 		}
 		

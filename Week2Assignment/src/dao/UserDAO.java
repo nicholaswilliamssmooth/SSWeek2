@@ -5,6 +5,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import domain.Airport;
+import domain.Route;
 import domain.User;
 import domain.UserRole;
 
@@ -22,6 +24,10 @@ public class UserDAO extends BaseDAO<User> {
 	public void addUser(User user) throws ClassNotFoundException, SQLException {
 		save("INSERT INTO user VALUES (?, ?, ?, ?, ?, ?, ?, ?)", 
 				new Object[] {user.getId(), user.getRoleID().getId(), user.getGivenName(), user.getFamilyName(), user.getUsername(), user.getPassword(), user.getPhone()});
+	}
+	
+	public List<User> readUserByLogin(String user, String pass) throws ClassNotFoundException, SQLException {
+		return read("SELECT * FROM user WHERE username = ? AND password = ?", new Object[] { user, pass });
 	}
 	
 	public List<User> readAllUsers() throws ClassNotFoundException, SQLException {
