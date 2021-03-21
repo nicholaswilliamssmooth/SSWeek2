@@ -1,5 +1,6 @@
 package dao;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -8,6 +9,11 @@ import java.util.List;
 import domain.AirplaneType;
 
 public class AirplaneTypeDAO extends BaseDAO<AirplaneType> {
+	public AirplaneTypeDAO(Connection conn) {
+		super(conn);
+		// TODO Auto-generated constructor stub
+	}
+
 	public void updateAirplaneType(AirplaneType airplaneType) throws ClassNotFoundException, SQLException {
 		save("UPDATE airplane_type SET max_capacity = ?, first_class = ?, business_class = ?  WHERE id = ?",
 				new Object[] {airplaneType.getMaxCapacity(), airplaneType.getFirstClass(), airplaneType.getBusinessClass(), airplaneType.getId()});

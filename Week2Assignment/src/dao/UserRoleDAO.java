@@ -1,5 +1,6 @@
 package dao;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -8,6 +9,11 @@ import java.util.List;
 import domain.UserRole;
 
 public class UserRoleDAO extends BaseDAO<UserRole> {
+
+	public UserRoleDAO(Connection conn) {
+		super(conn);
+		// TODO Auto-generated constructor stub
+	}
 
 	public void updateUserRole(UserRole userRole) throws ClassNotFoundException, SQLException {
 		save("UPDATE user_role SET name = ? WHERE id = ?",

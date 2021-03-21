@@ -1,5 +1,6 @@
 package dao;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -9,6 +10,11 @@ import domain.BookingPayment;
 
 
 public class BookingPaymentDAO extends BaseDAO<BookingPayment> {
+
+	public BookingPaymentDAO(Connection conn) {
+		super(conn);
+		// TODO Auto-generated constructor stub
+	}
 
 	public void updateBookingPayment(BookingPayment bookingPayment) throws ClassNotFoundException, SQLException {
 		save("UPDATE booking_payment SET stripe_id = ?, refunded = ? WHERE id = ?",

@@ -1,5 +1,6 @@
 package dao;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -11,6 +12,11 @@ import domain.User;
 
 public class BookingAgentDAO extends BaseDAO<BookingAgent> {
 	
+	public BookingAgentDAO(Connection conn) {
+		super(conn);
+		// TODO Auto-generated constructor stub
+	}
+
 	public void updateBookingAgent(BookingAgent bookingAgent) throws ClassNotFoundException, SQLException {
 		save("UPDATE booking_agent SET agent_id = ? WHERE id = ?",
 				new Object[] {bookingAgent.getAgentID().getId(), bookingAgent.getBookingID()});

@@ -1,5 +1,6 @@
 package dao;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -10,6 +11,11 @@ import domain.Airport;
 
 
 public class RouteDAO extends BaseDAO<Route> {
+	public RouteDAO(Connection conn) {
+		super(conn);
+		// TODO Auto-generated constructor stub
+	}
+
 	public void updateRoute(Route route) throws ClassNotFoundException, SQLException {
 		save("UPDATE route SET origin_id = ?, destination_id = ?,  WHERE id = ?",
 				new Object[] {route.getOriginID(), route.getDestinationID(), route.getId()});

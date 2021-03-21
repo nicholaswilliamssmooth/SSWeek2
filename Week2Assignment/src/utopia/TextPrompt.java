@@ -88,7 +88,21 @@ public abstract class TextPrompt {
 			}
 		}
 		return choice;
+	}
+	public String getGenderInput() {
+		Scanner scan = new Scanner(System.in);
+		String choice = "";
+			
+		while (true) {
+			choice = scan.nextLine();
+			if (choice.equals("M"))
+				return choice;
+			else if (choice.equals("F"))
+				return choice;
+			else
+				System.out.println("Invalid input, must type either \'M\' or \'F\'");
 
+			}
 
 	}
 }

@@ -74,10 +74,10 @@ public class MainClass extends TextPrompt {
 			emp.EMP1();
 			break;
 		case 2:
-			System.out.println("You are Administrator");
+			Admin admin = new Admin();
+			admin.ADMIN1();
 			break;		
 		case 3:
-			System.out.println("You are Traveler");
 			Traveler tra = new Traveler();
 			tra.LoginPrompt();
 			break;

@@ -1,5 +1,6 @@
 package dao;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -13,18 +14,23 @@ public class FlightBookingDAO extends BaseDAO<FlightBooking> {
 
 	// Since there's no ID on this one, there is not update function
 
+	public FlightBookingDAO(Connection conn) {
+		super(conn);
+		// TODO Auto-generated constructor stub
+	}
+
 	public void deleteFlightBooking(FlightBooking flightBooking) throws ClassNotFoundException, SQLException {
-		save("DELETE FROM flight_booking WHERE booking = ?", 
+		save("DELETE FROM flight_bookings WHERE booking = ?", 
 				new Object[] {flightBooking.getBookingID().getId()});
 	}
 	
 	public void addFlightBooking(FlightBooking flightBooking) throws ClassNotFoundException, SQLException {
-		save("INSERT INTO flight_booking VALUES (?, ?)", 
-				new Object[] {flightBooking.getBookingID().getId(), flightBooking.getFlightID().getId()});
+		save("INSERT INTO flight_bookings VALUES (?, ?)", 
+				new Object[] {flightBooking.getFlightID().getId(), flightBooking.getBookingID().getId()});
 	}
 	
 	public List<FlightBooking> readAllFlightBookings() throws ClassNotFoundException, SQLException {
-		return read("SELECT * FROM flight_booking", null);
+		return read("SELECT * FROM flight_bookings", null);
 	}
 	
 	public List<FlightBooking> extractData(ResultSet rs) throws ClassNotFoundException, SQLException {

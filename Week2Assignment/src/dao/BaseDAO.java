@@ -9,21 +9,16 @@ import java.util.List;
 
 public abstract class BaseDAO<T> {
 	
-	private static final String driver = "com.mysql.cj.jdbc.Driver";
-	private static final String url = "jdbc:mysql://localhost:3306/utopia";
-	private static final String username = "root";
-	private static final String password = "john15";
 	
-	public Connection getConnection() throws ClassNotFoundException, SQLException {
-		// Read from our one database
-		Class.forName(driver);
-		// Create Connection
-		Connection conn = DriverManager.getConnection(url, username, password);
-		return conn;
+	protected Connection conn = null;
+	
+	public BaseDAO(Connection conn) {
+		this.conn = conn;
 	}
 	
+	
 	public void save(String sql, Object[] vals) throws SQLException, ClassNotFoundException {
-		PreparedStatement pstmt = getConnection().prepareStatement(sql);
+		PreparedStatement pstmt = conn.prepareStatement(sql);
 		int count = 1;
 		for (Object o : vals) {
 			pstmt.setObject(count, o);
@@ -33,7 +28,7 @@ public abstract class BaseDAO<T> {
 	}
 	
 	public List<T> read(String sql, Object[] vals) throws SQLException, ClassNotFoundException {
-		PreparedStatement pstmt = getConnection().prepareStatement(sql);
+		PreparedStatement pstmt = conn.prepareStatement(sql);
 		int count = 1;
 		if (vals != null) {
 			for (Object o : vals) {

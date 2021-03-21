@@ -1,5 +1,6 @@
 package dao;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -11,6 +12,11 @@ import domain.User;
 import domain.UserRole;
 
 public class UserDAO extends BaseDAO<User> {
+	public UserDAO(Connection conn) {
+		super(conn);
+		// TODO Auto-generated constructor stub
+	}
+
 	public void updateUser(User user) throws ClassNotFoundException, SQLException {
 		save("UPDATE user SET role_id= ?, given_name = ?, family_name = ?, username = ?, email = ?, password = ?, phone = ? WHERE id = ?",
 				new Object[] {user.getRoleID().getId(), user.getGivenName(), user.getFamilyName(), user.getUsername(), user.getPassword(), user.getPhone(), user.getId()});

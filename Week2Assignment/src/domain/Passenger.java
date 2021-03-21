@@ -1,11 +1,13 @@
 package domain;
 
+import java.time.LocalDate;
+
 public class Passenger {
 	private Integer id;
 	private Booking bookingID;
 	private String givenName;
 	private String familyName;
-	private String dateOfBirth;
+	private LocalDate dateOfBirth;
 	private String gender;
 	private String address;
 	public Integer getId() {
@@ -32,10 +34,10 @@ public class Passenger {
 	public void setFamilyName(String familyName) {
 		this.familyName = familyName;
 	}
-	public String getDateOfBirth() {
+	public LocalDate getDateOfBirth() {
 		return dateOfBirth;
 	}
-	public void setDateOfBirth(String dateOfBirth) {
+	public void setDateOfBirth(LocalDate dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
 	public String getGender() {

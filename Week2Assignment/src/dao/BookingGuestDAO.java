@@ -1,5 +1,6 @@
 package dao;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -10,6 +11,11 @@ import domain.BookingGuest;
 
 public class BookingGuestDAO extends BaseDAO<BookingGuest> {
 	
+	public BookingGuestDAO(Connection conn) {
+		super(conn);
+		// TODO Auto-generated constructor stub
+	}
+
 	public void updateBookingGuest(BookingGuest bookingGuest) throws ClassNotFoundException, SQLException {
 		save("UPDATE booking_guest SET contact_email = ?, contact_phone = ? WHERE id = ?",
 				new Object[] {bookingGuest.getContactEmail(), bookingGuest.getPhone(), bookingGuest.getBookingID()});

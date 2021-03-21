@@ -2,6 +2,7 @@ package dao;
 
 import domain.Airport;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -10,6 +11,11 @@ public class AirportDAO extends BaseDAO<Airport> {
 	
 
 	
+	public AirportDAO(Connection conn) {
+		super(conn);
+		// TODO Auto-generated constructor stub
+	}
+
 	public void updateAirport(Airport airport) throws ClassNotFoundException, SQLException {
 		save("UPDATE airport SET city = ? WHETE iata_id = ?",
 				new Object[] {airport.getCity(), airport.getAirportCode()});

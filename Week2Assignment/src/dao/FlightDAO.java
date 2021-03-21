@@ -1,5 +1,6 @@
 package dao;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -14,6 +15,11 @@ import domain.Flight;
 import domain.Route;
 
 public class FlightDAO extends BaseDAO<Flight> {
+	public FlightDAO(Connection conn) {
+		super(conn);
+		// TODO Auto-generated constructor stub
+	}
+
 	public void updateFlight(Flight flight) throws ClassNotFoundException, SQLException {
 		save("UPDATE flight SET route_id = ?, airplane_id = ?, departure_time = ?, arrival_time = ?, reserved_seats = ?, reserved_first = ?, reserved_business = ?, seat_price = ?  WHERE id = ?",
 				new Object[] {flight.getRouteID().getId(), flight.getAirplaneID().getId(), flight.getDepartureTime(), flight.getArrivalTime(), flight.getReservedSeats(), flight.getReservedFirstClass(), flight.getReservedBusiness(), flight.getSeatPrice(), flight.getId()});
@@ -26,7 +32,7 @@ public class FlightDAO extends BaseDAO<Flight> {
 	
 	public void addFlight(Flight flight) throws ClassNotFoundException, SQLException {
 		save("INSERT INTO flight VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", 
-				new Object[] {flight.getId(), flight.getRouteID(), flight.getAirplaneID(), flight.getDepartureTime(), flight.getArrivalTime(), flight.getReservedSeats(), flight.getReservedFirstClass(), flight.getReservedBusiness(), flight.getSeatPrice()});
+				new Object[] {flight.getId(), flight.getRouteID().getId(), flight.getAirplaneID().getId(), flight.getDepartureTime(), flight.getArrivalTime(), flight.getReservedSeats(), flight.getReservedFirstClass(), flight.getReservedBusiness(), flight.getSeatPrice()});
 	}
 	
 	public List<Flight> readAllFlights() throws ClassNotFoundException, SQLException {
