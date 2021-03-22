@@ -182,6 +182,7 @@ public class EmployeeService extends TextPrompt {
 				+ "3) Economy -> " + economy + "\n"
 				+ "4) Return to previous menu \r\n"
 				+ "");
+		getIntInput(4, 4);
 	
 	}
 

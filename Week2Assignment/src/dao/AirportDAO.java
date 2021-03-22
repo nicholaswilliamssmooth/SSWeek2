@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 public class AirportDAO extends BaseDAO<Airport> {
 	
-
+	
 	
 	public AirportDAO(Connection conn) {
 		super(conn);
