@@ -19,7 +19,7 @@ public class UserDAO extends BaseDAO<User> {
 
 	public void updateUser(User user) throws ClassNotFoundException, SQLException {
 		save("UPDATE user SET role_id= ?, given_name = ?, family_name = ?, username = ?, email = ?, password = ?, phone = ? WHERE id = ?",
-				new Object[] {user.getRoleID().getId(), user.getGivenName(), user.getFamilyName(), user.getUsername(), user.getPassword(), user.getPhone(), user.getId()});
+				new Object[] {user.getRoleID().getId(), user.getGivenName(), user.getFamilyName(), user.getUsername(), user.getEmail(), user.getPassword(), user.getPhone(), user.getId()});
 	}
 
 	public void deleteUser(User user) throws ClassNotFoundException, SQLException {
@@ -29,7 +29,7 @@ public class UserDAO extends BaseDAO<User> {
 	
 	public void addUser(User user) throws ClassNotFoundException, SQLException {
 		save("INSERT INTO user VALUES (?, ?, ?, ?, ?, ?, ?, ?)", 
-				new Object[] {user.getId(), user.getRoleID().getId(), user.getGivenName(), user.getFamilyName(), user.getUsername(), user.getPassword(), user.getPhone()});
+				new Object[] {user.getId(), user.getRoleID().getId(), user.getGivenName(), user.getFamilyName(), user.getUsername(), user.getEmail(), user.getPassword(), user.getPhone()});
 	}
 	
 	public List<User> readUserByLogin(String user, String pass) throws ClassNotFoundException, SQLException {

@@ -105,4 +105,20 @@ public abstract class TextPrompt {
 			}
 
 	}
+	
+	public String getAirportCodeInput() {
+		Scanner scan = new Scanner(System.in);
+		String choice = "";
+			
+		while (true) {
+			choice = scan.nextLine();
+			if (choice.length() == 3) {
+				return choice;
+			}
+			else
+				System.out.println("Invalid input, must enter a 3 character code");
+
+			}
+
+	}
 }

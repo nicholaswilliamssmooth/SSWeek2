@@ -39,6 +39,10 @@ public class FlightDAO extends BaseDAO<Flight> {
 		return read("SELECT * FROM flight", null);
 	}
 	
+	public List<Flight> readFlightbyID(Flight flight) throws ClassNotFoundException, SQLException {
+		return read("SELECT * FROM flight where id = ?", new Object[] {flight.getId()});
+	}
+	
 	public List<Flight> extractData(ResultSet rs) throws ClassNotFoundException, SQLException {
 		List<Flight> flights = new ArrayList<>();
 		while (rs.next()) {

@@ -26,7 +26,7 @@ import domain.Passenger;
 import domain.Route;
 import domain.User;
 
-public class AdminService {
+public class TravelerService {
 
 	Util util = new Util();
 	

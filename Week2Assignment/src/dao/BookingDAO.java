@@ -42,6 +42,10 @@ public class BookingDAO extends BaseDAO<Booking> {
 		return allMatching;
 	}
 	
+	public List<Booking> readAllUnactive() throws ClassNotFoundException, SQLException {
+		return read("SELECT * FROM booking WHERE is_active = 0", null);
+	}
+	
 	public List<Booking> readAllBookings() throws ClassNotFoundException, SQLException {
 		return read("SELECT * FROM booking", null);
 	}

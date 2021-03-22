@@ -20,7 +20,7 @@ public class FlightBookingDAO extends BaseDAO<FlightBooking> {
 	}
 
 	public void deleteFlightBooking(FlightBooking flightBooking) throws ClassNotFoundException, SQLException {
-		save("DELETE FROM flight_bookings WHERE booking = ?", 
+		save("DELETE FROM flight_bookings WHERE booking_id = ?", 
 				new Object[] {flightBooking.getBookingID().getId()});
 	}
 	
@@ -31,6 +31,10 @@ public class FlightBookingDAO extends BaseDAO<FlightBooking> {
 	
 	public List<FlightBooking> readAllFlightBookings() throws ClassNotFoundException, SQLException {
 		return read("SELECT * FROM flight_bookings", null);
+	}
+	
+	public List<FlightBooking> readFlightBookingsbyBooking(FlightBooking flightBooking) throws ClassNotFoundException, SQLException {
+		return read("SELECT * FROM flight_bookings WHERE booking_id = ?", new Object[] { flightBooking.getBookingID().getId()});
 	}
 	
 	public List<FlightBooking> extractData(ResultSet rs) throws ClassNotFoundException, SQLException {

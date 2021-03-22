@@ -1,31 +1,15 @@
 package utopia;
 
-import java.lang.reflect.Method;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import dao.AirplaneDAO;
-import dao.AirplaneTypeDAO;
-import dao.AirportDAO;
-import dao.BookingDAO;
-import dao.BookingUserDAO;
-import dao.FlightBookingDAO;
-import dao.FlightDAO;
-import dao.PassengerDAO;
-import dao.RouteDAO;
-import dao.UserDAO;
-import domain.AirplaneType;
+
 import domain.Booking;
-import domain.BookingUser;
 import domain.Flight;
-import domain.FlightBooking;
-import domain.Passenger;
-import domain.Route;
 import domain.User;
-import service.AdminService;
+import service.TravelerService;
 
 public class Traveler extends TextPrompt {
 	
@@ -61,7 +45,7 @@ public class Traveler extends TextPrompt {
 	 * @throws ClassNotFoundException 
 	 */
 	public Boolean login(String username, String password) throws ClassNotFoundException, SQLException {
-		AdminService gtMatch = new AdminService();
+		TravelerService gtMatch = new TravelerService();
 
 		List<User> userMatch = gtMatch.getMatchingUserList(username, password);
 		if (userMatch.size() > 0) {
@@ -97,7 +81,7 @@ public class Traveler extends TextPrompt {
 	}
 	
 	public void cancelBooking() throws ClassNotFoundException, SQLException {
-		AdminService admin = new AdminService();
+		TravelerService admin = new TravelerService();
 		Integer choice = 0;
 		List<Booking> allBookedFlights = admin.getBookedFlights(loggedInUser);
 		
@@ -121,7 +105,7 @@ public class Traveler extends TextPrompt {
 	}
 	
 	public void bookTicket(Flight flight) throws ClassNotFoundException, SQLException {
-		AdminService admin = new AdminService();
+		TravelerService admin = new TravelerService();
 		Integer choice = 0;
 		
 		List<String> funcHolder = admin.getBookingList(flight);
@@ -151,7 +135,7 @@ public class Traveler extends TextPrompt {
 	}
 	
 	public void economyClassAdd(Flight flight) throws ClassNotFoundException, SQLException {
-		AdminService admin = new AdminService();
+		TravelerService admin = new TravelerService();
 		// get dob from input
 		System.out.print("Please enter your date of birth: ");
 		String dateStr = getDateInput();
@@ -172,7 +156,7 @@ public class Traveler extends TextPrompt {
 	}
 	
 	public void businessClassAdd(Flight flight) throws SQLException {
-		AdminService admin = new AdminService();
+		TravelerService admin = new TravelerService();
 		// get dob from input
 		System.out.print("Please enter your date of birth: ");
 		String dateStr = getDateInput();
@@ -192,7 +176,7 @@ public class Traveler extends TextPrompt {
 	}
 	
 	public void firstClassAdd(Flight flight) throws SQLException {
-		AdminService admin = new AdminService();
+		TravelerService admin = new TravelerService();
 		// get dob from input
 		System.out.print("Please enter your date of birth: ");
 		String dateStr = getDateInput();
@@ -215,7 +199,7 @@ public class Traveler extends TextPrompt {
 		// Pick Flight
 		// Declare and initialize variables
 		Integer choice = 0;
-		AdminService gtflight = new AdminService();
+		TravelerService gtflight = new TravelerService();
 		List<Flight> flightList = gtflight.getFlights();
 		
 		System.out.println(flightList.size()+1 + ") Quit to previous \r\n");
@@ -238,7 +222,7 @@ public class Traveler extends TextPrompt {
 	}
 	
 	public void viewFlightDetails(Flight flight) throws ClassNotFoundException, SQLException {
-		AdminService admin = new AdminService();
+		TravelerService admin = new TravelerService();
 		admin.getFlightDetails(flight);
 		// Just a prompt to exit the menu
 		getIntInput(4, 4);

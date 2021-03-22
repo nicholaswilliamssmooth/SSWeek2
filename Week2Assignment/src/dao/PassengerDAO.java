@@ -38,6 +38,10 @@ public class PassengerDAO extends BaseDAO<Passenger> {
 		return read("SELECT * FROM passenger", null);
 	}
 	
+	public List<Passenger> readPassengerFromBookingID(Passenger passenger) throws ClassNotFoundException, SQLException {
+		return read("SELECT * FROM passenger WHERE booking_id = ?", new Object[] {passenger.getBookingID().getId()});
+	}
+	
 	public List<Passenger> extractData(ResultSet rs) throws ClassNotFoundException, SQLException {
 		List<Passenger> passengers = new ArrayList<>();
 		while (rs.next()) {

@@ -17,7 +17,7 @@ public class AirportDAO extends BaseDAO<Airport> {
 	}
 
 	public void updateAirport(Airport airport) throws ClassNotFoundException, SQLException {
-		save("UPDATE airport SET city = ? WHETE iata_id = ?",
+		save("UPDATE airport SET city = ? WHERE iata_id = ?",
 				new Object[] {airport.getCity(), airport.getAirportCode()});
 	}
 
