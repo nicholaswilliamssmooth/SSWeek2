@@ -30,8 +30,9 @@ import domain.Passenger;
 import domain.Route;
 import domain.User;
 import domain.UserRole;
+import utopia.TextPrompt;
 
-public class Administrator extends utopia.TextPrompt {
+public class Administrator extends TextPrompt {
 	
 	Util util = new Util();
 	

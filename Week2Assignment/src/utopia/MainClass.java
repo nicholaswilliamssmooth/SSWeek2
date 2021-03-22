@@ -15,7 +15,7 @@ import java.util.Scanner;
  * @author Nicholas Williams
  *
  */
-public class MainClass extends TextPrompt {
+public class MainClass extends TextPromptTest {
 
 	private static final String driver = "com.mysql.cj.jdbc.Driver";
 	private static final String url = "jdbc:mysql://localhost:3306/utopia";
